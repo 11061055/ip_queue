@@ -138,7 +138,7 @@ void main (int argc, char **argv)
 
 	    }
 
- 	    // change destination ip here
+ 	    // change destination ip here  拿到报文之后，可以在这里做想要的修改
 	    iph->daddr = inet_addr("111.202.103.60");
 
 	    tcph = (struct tcphdr *) (msg->payload + (iph->ihl << 2));
