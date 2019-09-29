@@ -1,6 +1,6 @@
 # ip_queue
 
-基于 IP_QUEUE 的数据包处理程序，可修改IP数据报、TCP数据报不同字段，实现诸如 NAT 负载均衡 入侵检测 等。
+基于 IP_QUEUE 的数据包处理程序，可修改IP数据报、TCP数据报不同字段，实现诸如 NAT 负载均衡 入侵检测 等功能。
 
 ![curl](https://github.com/11061055/ip_queue/blob/master/images/nat.png)
 
