@@ -7,7 +7,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
 #include "libipq.h"
 
 #define BUFSIZE 2048
@@ -119,7 +118,7 @@ void main (int argc, char **argv)
 	{
 	    ipq_packet_msg_t *msg = ipq_get_packet (buf);
 
-	    fprintf (stderr, "Received packet (size: %d).\n", msg->data_len);
+	    //fprintf (stderr, "Received packet (size: %d).\n", msg->data_len);
 
 	    struct iphdr *iph = ((struct iphdr *) msg->payload);
 
@@ -137,9 +136,20 @@ void main (int argc, char **argv)
 		break;
 
 	    }
+		
 
- 	    // change destination ip here  拿到报文之后，可以在这里做想要的修改
-	    iph->daddr = inet_addr("111.202.103.60");
+ 	    // change output destination ip here  发送数据的时候,如果目的IP为39.156.69.79，则将目的IP改为111.202.103.60
+	    if (iph->daddr == inet_addr("39.156.69.79"))
+            {
+	      	iph->daddr = inet_addr("111.202.103.60");
+            }
+ 	    // change input source ip here	接收数据的时候,如果源IP为111.202.103.60，则将源IP改为39.156.69.79
+	    if (iph->saddr == inet_addr("111.202.103.60"))
+	    {
+	    	iph->saddr = inet_addr("39.156.69.79");
+	    }
+		
+	    // 如上正反操作，将服务提供方由39.156.69.79改为111.202.103.60，且对应用透明
 
 	    tcph = (struct tcphdr *) (msg->payload + (iph->ihl << 2));
 
