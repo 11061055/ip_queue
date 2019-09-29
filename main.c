@@ -149,7 +149,7 @@ void main (int argc, char **argv)
 	    	iph->saddr = inet_addr("39.156.69.79");
 	    }
 		
-	    // 如上正反操作，将服务提供方由39.156.69.79改为111.202.103.60，且对应用透明
+	    // 如上 目标地址 NAT 操作，将服务提供方由39.156.69.79改为111.202.103.60，且对应用透明
 
 	    tcph = (struct tcphdr *) (msg->payload + (iph->ihl << 2));
 
