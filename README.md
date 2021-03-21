@@ -1,12 +1,18 @@
 # ip_queue
 
-
+```
 从内核获取网络数据包,进行 NAT。
 
 背景是 专线容灾  和  网络切换。
 
-基于 IP_QUEUE 的数据包处理程序，可修改IP数据报、TCP数据报不同字段，实现诸如 NAT 负载均衡 入侵检测 等功能。
+基于 IP_QUEUE 的数据包处理程序，
 
+可修改IP数据报、TCP数据报不同字
+
+段，可用于实现如 NAT 、负载均衡
+
+流量拷贝 、入侵检测 等功能。
+```
 
 ![curl](https://github.com/11061055/ip_queue/blob/master/images/nat.png)
 
